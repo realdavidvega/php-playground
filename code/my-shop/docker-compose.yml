@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'myShop'
+      MYSQL_USER: 'someUser'
+      MYSQL_PASSWORD: 'somePassword'
+      MYSQL_ROOT_PASSWORD: 'someRootPassword'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: 'someRootPassword'
+    ports:
+      - '8080:80'
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
