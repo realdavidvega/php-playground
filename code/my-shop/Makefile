@@ -6,4 +6,4 @@ mysql:
 
 .PHONY: run
 run:
-	php -S src/app
+	php -S localhost:8000 -t ./src/main
