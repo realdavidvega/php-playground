@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class V1__CreateUsersTable extends AbstractMigration
+final class CreateUsersTable extends AbstractMigration
 {
-    public function up()
+    public function change(): void
     {
         $sql = "
         CREATE TABLE IF NOT EXISTS `users` (
@@ -21,12 +21,6 @@ final class V1__CreateUsersTable extends AbstractMigration
             UNIQUE KEY `email` (`email`)
         ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
         ";
-        $this->execute($sql);
-    }
-
-    public function down()
-    {
-        $sql = "DROP TABLE IF EXISTS `users`";
         $this->execute($sql);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace repository\user\models;
+namespace models;
 
 class UserId {
     private int $id;
@@ -22,7 +22,7 @@ class UserId {
     }
 }
 
-class UserDTO
+class User
 {
     private UserId $id;
     private string $name;
@@ -53,7 +53,7 @@ class UserDTO
         return $this->id;
     }
 
-    public function setId(UserId $id): UserDTO
+    public function setId(UserId $id): User
     {
         $this->id = $id;
         return $this;
@@ -64,7 +64,7 @@ class UserDTO
         return $this->name;
     }
 
-    public function setName(string $name): UserDTO
+    public function setName(string $name): User
     {
         $this->name = $name;
         return $this;
@@ -75,7 +75,7 @@ class UserDTO
         return $this->surname;
     }
 
-    public function setSurname(string $surname): UserDTO
+    public function setSurname(string $surname): User
     {
         $this->surname = $surname;
         return $this;
@@ -86,7 +86,7 @@ class UserDTO
         return $this->address;
     }
 
-    public function setAddress(string $address): UserDTO
+    public function setAddress(string $address): User
     {
         $this->address = $address;
         return $this;
@@ -97,7 +97,7 @@ class UserDTO
         return $this->phone;
     }
 
-    public function setPhone(string $phone): UserDTO
+    public function setPhone(string $phone): User
     {
         $this->phone = $phone;
         return $this;
@@ -108,7 +108,7 @@ class UserDTO
         return $this->email;
     }
 
-    public function setEmail(string $email): UserDTO
+    public function setEmail(string $email): User
     {
         $this->email = $email;
         return $this;

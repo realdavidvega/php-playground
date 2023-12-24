@@ -1,5 +1,5 @@
 paths:
-  migrations: ./db/migrations
+  migrations: '%%PHINX_CONFIG_DIR%%/db/migrations'
 
 environments:
   default_migration_table: phinxlog
@@ -7,9 +7,9 @@ environments:
 
   development:
     adapter: mysql
-    host: localhost
+    host: 127.0.0.1
     name: myShop
     user: someUser
-    pass: somePassword
+    pass: 'somePassword'
     port: 3306
-    charset: utf8mb4
+    charset: utf8

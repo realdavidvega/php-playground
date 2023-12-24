@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class V3__CreateProductsTable extends AbstractMigration
+final class CreateProductsTable extends AbstractMigration
 {
-    public function up()
+    public function change(): void
     {
         $sql = "
             CREATE TABLE `products` (
@@ -14,15 +14,9 @@ final class V3__CreateProductsTable extends AbstractMigration
               `name` varchar(45) NOT NULL,
               `price` double(10,2) NOT NULL,
               `image` text NOT NULL,
-              PRIMARY KEY (`id`),
+              PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         ";
-        $this->execute($sql);
-    }
-
-    public function down()
-    {
-        $sql = "DROP TABLE IF EXISTS `products`";
         $this->execute($sql);
     }
 }

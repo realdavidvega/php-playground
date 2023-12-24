@@ -15,9 +15,11 @@ abstract class DatabaseConfig
     public static function openConnection()
     {
         try {
-            $connection = new PDO("mysql:host=" . self::$server . ";dbname=" . self::$db . ";charset=utf8",
+            $connection = new PDO(
+                "mysql:host=" . self::$server . ";dbname=" . self::$db . ";charset=utf8",
                 self::$user,
-                self::$password);
+                self::$password
+            );
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "A connection to the database server could not be established.<br>";

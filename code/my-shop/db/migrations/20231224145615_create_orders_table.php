@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class V2__CreateOrdersTable extends AbstractMigration
+final class CreateOrdersTable extends AbstractMigration
 {
-    public function up()
+    public function change(): void
     {
         $sql = "
             CREATE TABLE IF NOT EXISTS `orders` (
@@ -17,17 +17,10 @@ final class V2__CreateOrdersTable extends AbstractMigration
               PRIMARY KEY (`id`),
               KEY `product_id` (`product_id`),
               KEY `order_id` (`user_id`,`product_id`) USING BTREE,
-              KEY `order_idx` (`order_id`),
-              CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-              CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+              CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+              CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
             ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
         ";
-        $this->execute($sql);
-    }
-
-    public function down()
-    {
-        $sql = "DROP TABLE IF EXISTS `orders`";
         $this->execute($sql);
     }
 }
