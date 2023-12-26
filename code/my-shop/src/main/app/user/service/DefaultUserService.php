@@ -2,6 +2,12 @@
 
 namespace user\service;
 
+use user\model\User;
+use user\model\UserError;
+use user\model\UserId;
+use user\repository\DefaultUserRepository;
+use user\repository\UserRepository;
+
 class DefaultUserService implements UserService
 {
     private UserRepository $repository;

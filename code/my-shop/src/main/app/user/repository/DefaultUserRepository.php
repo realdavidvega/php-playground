@@ -2,6 +2,11 @@
 
 namespace user\repository;
 
+use PDO;
+use shared\DatabaseConfig;
+use user\model\User;
+use user\model\UserId;
+
 class DefaultUserRepository implements UserRepository
 {
     private PDO $connection;

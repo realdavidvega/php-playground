@@ -2,11 +2,9 @@
 
 namespace controller;
 
-require_once '../service/UserService.php';
-
 use Exception;
-use service\DefaultUserService;
 use user\model\UserError;
+use user\service\DefaultUserService;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $name = trim($_POST["name"]);
