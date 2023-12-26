@@ -1,35 +1,6 @@
 <?php
 
-namespace service;
-
-require_once '../repository/UserRepository.php';
-
-use Exception;
-use Throwable;
-use models\User;
-use models\UserId;
-use repository\UserRepository;
-use repository\DefaultUserRepository;
-
-class UserError extends Exception implements Throwable
-{
-}
-
-interface UserService
-{
-    function register(
-        string $name,
-        string $surname,
-        string $address,
-        string $phone,
-        string $email,
-        string $password
-    ): UserId;
-
-    function login(string $email, string $password): UserId;
-
-    function getUserInfo(UserId $id): User;
-}
+namespace user\service;
 
 class DefaultUserService implements UserService
 {

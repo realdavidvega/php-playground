@@ -5,8 +5,8 @@ namespace repository;
 require_once '../shared/DatabaseConfig.php';
 
 use PDO;
-use models\User;
-use models\UserId;
+use model\User;
+use model\UserId;
 use shared\DatabaseConfig;
 
 interface UserRepository
