@@ -1,7 +1,13 @@
 {
-    "require": {
-        "robmorgan/phinx": "^0.14.0",
-        "symfony/yaml": "^5.4",
-      "ext-pdo": "*"
+  "autoload": {
+    "psr-4": {
+      "user\\": "src/main/app/domain/user",
+      "shared\\": "src/main/app/shared"
     }
+  },
+  "require": {
+    "robmorgan/phinx": "^0.14.0",
+    "symfony/yaml": "^5.4",
+    "ext-pdo": "*"
+  }
 }

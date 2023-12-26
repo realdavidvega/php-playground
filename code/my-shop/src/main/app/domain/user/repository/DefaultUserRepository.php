@@ -23,7 +23,7 @@ class DefaultUserRepository implements UserRepository
         string $phone,
         string $email,
         string $password
-    ): UserId
+    )
     {
         $statement = $this->connection->prepare("
             INSERT INTO users (name, surname, address, phone, email, password)
@@ -38,8 +38,8 @@ class DefaultUserRepository implements UserRepository
         $statement->bindParam(":password", $password);
         $statement->execute();
 
-        $userData = $statement->fetchObject();
-        return new UserId($userData->id);
+        $userId = intval($this->connection->lastInsertId());
+        return new UserId($userId);
     }
 
     public function findUserById(int $id): ?User
