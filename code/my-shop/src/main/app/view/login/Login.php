@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     try {
         $service->login($email, $password);
         $_SESSION['email'] = $email;
-        header("Location: verify.php");
+        header("Location: ../shop/Shop.php");
         exit();
     } catch (UserError $e) {
         $registerError = $e->getMessage();

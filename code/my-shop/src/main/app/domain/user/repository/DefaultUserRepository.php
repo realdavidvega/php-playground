@@ -97,7 +97,7 @@ class DefaultUserRepository implements UserRepository
             $hashedPasswordFromDB = $userData->password;
             $userId = $userData->id;
             if (password_verify($password, $hashedPasswordFromDB)) {
-                return $userId;
+                return new UserId($userId);
             }
         }
         return null;
