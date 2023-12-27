@@ -12,8 +12,8 @@ session_start();
     <h2>Welcome to MyShop!</h2>
     <p>Please, select an option:</p>
     <ul>
-        <li><a href="/src/main/app/controller/Register.php">Register</a></li>
-        <li><a href="controller/Login.php">Login</a></li>
+        <li><a href="/src/main/app/view/register/Register.php">Register</a></li>
+        <li><a href="/src/main/app/view/login/Login.php">Login</a></li>
     </ul>
 </body>
 </html>

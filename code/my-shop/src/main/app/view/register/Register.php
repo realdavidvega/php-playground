@@ -30,6 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         }
     }
 }
-$registerMessage = "If you are registered, <a href='login.php'> login </a>.";
+$registerMessage = "If you are registered, <a href='../login/Login.php'> login </a>.";
 
-include '../view/RegisterView.php';
+include 'RegisterView.php';

@@ -1,6 +1,6 @@
 <?php
 
-namespace shared;
+namespace config;
 
 use PDO;
 use PDOException;

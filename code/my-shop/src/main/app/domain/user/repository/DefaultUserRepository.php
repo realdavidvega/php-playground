@@ -3,7 +3,7 @@
 namespace user\repository;
 
 use PDO;
-use shared\DatabaseConfig;
+use config\DatabaseConfig;
 use user\model\User;
 use user\model\UserId;
 

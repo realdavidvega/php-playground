@@ -2,7 +2,7 @@
   "autoload": {
     "psr-4": {
       "user\\": "src/main/app/domain/user",
-      "shared\\": "src/main/app/shared"
+      "config\\": "src/main/app/config"
     }
   },
   "require": {
