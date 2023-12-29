@@ -23,7 +23,7 @@ class DefaultUserRepository implements UserRepository
         string $phone,
         string $email,
         string $password
-    )
+    ): UserId
     {
         $statement = $this->connection->prepare("
             INSERT INTO users (name, surname, address, phone, email, password)

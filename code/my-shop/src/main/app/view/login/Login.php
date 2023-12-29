@@ -9,11 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
-    $service = new DefaultUserService();
-
     try {
-        $service->login($email, $password);
-        $_SESSION['email'] = $email;
+        $service = new DefaultUserService();
+        $id = $service->login($email, $password)->getId();
+        $_SESSION['id'] = $id;
         header("Location: ../shop/Shop.php");
         exit();
     } catch (UserError $e) {

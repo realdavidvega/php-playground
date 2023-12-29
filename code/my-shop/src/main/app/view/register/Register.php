@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         $registerError = "The passwords doesn't match. Please try again.";
     } else {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $service = new DefaultUserService();
 
         try {
+            $service = new DefaultUserService();
             $service->register($name, $surname, $address, $phone, $email, $hashed_password);
             $registerSuccess = "User created successfully!";
         } catch (UserError $e) {
