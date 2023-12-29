@@ -1,6 +1,6 @@
 # MyShop
 
-Simple PHP project for playground and teaching.
+Simple PHP project for teaching of simple MVC and DDD.
 
 ## Requirements
 - PHP >= 8.3

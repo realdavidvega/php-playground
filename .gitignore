@@ -13,3 +13,4 @@
 /code/my-shop/src/main/app/config/crypt.php
 
 .idea
+.DS_Store
