@@ -5,7 +5,6 @@ namespace product\repository;
 use config\DatabaseConfig;
 use PDO;
 use product\model\Product;
-use product\service\ProductRepository;
 
 class DefaultProductRepository implements ProductRepository
 {

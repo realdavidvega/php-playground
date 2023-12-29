@@ -5,6 +5,7 @@ namespace product\service;
 use product\model\Product;
 use product\model\ProductError;
 use product\repository\DefaultProductRepository;
+use product\repository\ProductRepository;
 
 class DefaultProductService implements ProductService
 {
