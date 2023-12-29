@@ -7,7 +7,7 @@ use user\model\UserId;
 
 interface UserRepository
 {
-    function insertUser(
+    public function insertUser(
         string $name,
         string $surname,
         string $address,
@@ -16,9 +16,9 @@ interface UserRepository
         string $password
     );
 
-    function findUserById(int $id): ?User;
+    public function findUserById(int $id): ?User;
 
-    function findUserByEmail(string $email): ?User;
+    public function findUserByEmail(string $email): ?User;
 
-    function validateUserAndPassword(string $email, string $password): ?UserId;
+    public function validateUserAndPassword(string $email, string $password): ?UserId;
 }
