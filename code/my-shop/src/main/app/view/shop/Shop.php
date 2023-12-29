@@ -6,8 +6,21 @@ require_once '../../../../../vendor/autoload.php';
 use product\model\ProductError;
 use product\service\DefaultProductService;
 use shared\Utils;
+use user\model\UserError;
+use user\model\UserId;
+use user\service\DefaultUserService;
 
 Utils::checkAuthentication();
+
+try {
+    $userService = new DefaultUserService();
+    $id = new UserId($_SESSION['id']);
+    $name = $userService->getUserInfo($id)->getName();
+} catch (UserError $e) {
+    $userError = $e->getMessage();
+} catch (Exception $e) {
+    echo 'An error occurred: ' . $e->getMessage();
+}
 
 try {
     $productService = new DefaultProductService();
