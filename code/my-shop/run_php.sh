@@ -1,0 +1,1 @@
+vendor/bin/phinx migrate -e development && php -S localhost:8000 -t ./src/main

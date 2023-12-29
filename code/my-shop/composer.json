@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "psr-4": {
+      "user\\": "src/main/app/domain/user",
+      "config\\": "src/main/app/config"
+    }
+  },
+  "require": {
+    "robmorgan/phinx": "^0.14.0",
+    "symfony/yaml": "^5.4",
+    "ext-pdo": "*"
+  }
+}
