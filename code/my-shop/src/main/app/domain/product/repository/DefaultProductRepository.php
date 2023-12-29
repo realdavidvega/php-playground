@@ -19,7 +19,7 @@ class DefaultProductRepository implements ProductRepository
     /**
      * @return Product[]|null
      */
-    public function findProducts(): ?array
+    public function findAll(): ?array
     {
         $statement = $this->connection->prepare("
             SELECT id, name, price, image FROM products

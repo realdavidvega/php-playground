@@ -15,9 +15,9 @@ foreach ($products as $product) {
     <h3>$product['name']</h3>
     <h3>$product['price']</h3>
     <img src="$product['image']" alt="$product['name']">
-    <form action="cart.php" method="post">
+    <form action="Shop.php" method="post">
         <input type="hidden" name="id" value="$product['id']">
-        <input type="submit" value="Add to Cart">
+        <input type="submit" value="add_to_cart">
     </form>
     <?php
 }

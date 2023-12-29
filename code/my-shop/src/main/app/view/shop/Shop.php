@@ -1,9 +1,22 @@
 <?php
 
+use product\model\ProductError;
+use product\service\DefaultProductService;
 
+require_once '../../../../../vendor/autoload.php';
 
-if (isset($_POST['add_to_cart']) && isset($_POST['product_id'])) {
-    $productId = $_POST['product_id'];
+$service = new DefaultProductService();
+
+try {
+    $products = $service->getProducts();
+} catch (ProductError $e) {
+    $productsError = $e->getMessage();
+} catch (Exception $e) {
+    echo 'An error occurred: ' . $e->getMessage();
+}
+
+if (isset($_POST['add_to_cart'])) {
+    $productId = $_POST['id'];
     $product = array_filter($products, function ($item) use ($productId) {
         return $item['id'] == $productId;
     });
@@ -17,3 +30,5 @@ if (isset($_POST['add_to_cart']) && isset($_POST['product_id'])) {
         ];
     }
 }
+
+include "ShopView.php";

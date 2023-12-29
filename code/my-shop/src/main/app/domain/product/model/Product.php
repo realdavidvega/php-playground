@@ -4,12 +4,12 @@ namespace product\model;
 
 class Product
 {
-    private int $id;
+    private ProductId $id;
     private string $name;
     private float $price;
     private string $image;
 
-    public function __construct(int $id, string $name, float $price, string $image)
+    public function __construct(ProductId $id, string $name, float $price, string $image)
     {
         $this->id = $id;
         $this->name = $name;
@@ -17,12 +17,12 @@ class Product
         $this->image = $image;
     }
 
-    public function getId(): int
+    public function getId(): ProductId
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(ProductId $id): void
     {
         $this->id = $id;
     }

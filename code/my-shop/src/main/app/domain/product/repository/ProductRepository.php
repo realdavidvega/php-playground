@@ -9,5 +9,5 @@ interface ProductRepository
     /**
      * @return Product[]|null
      */
-    public function findProducts(): ?array;
+    public function findAll(): ?array;
 }
