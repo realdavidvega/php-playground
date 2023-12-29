@@ -8,5 +8,6 @@ Simple PHP project for playground and teaching.
 - Docker
 
 ## How-to
-1. Run the DB with `make mysql`.
-2. Run the migrations and serve the app with `make run`.
+1. Run `composer install` to install the dependencies.
+2. Run the DB with `make mysql`.
+3. Run the migrations and serve the app with `make run`.
