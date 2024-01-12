@@ -5,6 +5,7 @@ namespace product\repository;
 use config\DatabaseConfig;
 use PDO;
 use product\model\Product;
+use product\model\ProductId;
 
 class DefaultProductRepository implements ProductRepository
 {
@@ -28,7 +29,7 @@ class DefaultProductRepository implements ProductRepository
         $productsData = $statement->fetchAll();
         if ($productsData) {
             $createProduct = fn($productData) => new Product(
-                $productData['id'],
+                new ProductId($productData['id']),
                 $productData['name'],
                 $productData['price'],
                 $productData['image']

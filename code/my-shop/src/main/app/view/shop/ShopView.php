@@ -20,13 +20,13 @@ if (isset($productsError)) {
 } else {
 foreach ($products as $product) {
 ?>
-<h3>$product['id']</h3>
-<h3>$product['name']</h3>
-<h3>$product['price']</h3>
-<img src="$product['image']" alt="$product['name']">
+<h3><?=$product->getId()?></h3>
+<h3><?=$product->getName()?></h3>
+<h3><?=$product->getPrice()?></h3>
+<img src="../../../public/images/<?=$product->getImage()?>.png" alt="<?=$product->getName()?>">
 <form action="Shop.php" method="post">
-    <input type="hidden" name="id" value="$product['id']">
-    <input type="submit" value="add_to_cart">
+    <input type="hidden" name="id" value="<?=$product->getId()?>">
+    <input type="submit" value="Add to cart">
 </form>
 <?php
 }

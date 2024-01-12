@@ -7,9 +7,9 @@ class Product
     private ProductId $id;
     private string $name;
     private float $price;
-    private string $image;
+    private ?string $image;
 
-    public function __construct(ProductId $id, string $name, float $price, string $image)
+    public function __construct(ProductId $id, string $name, float $price, ?string $image)
     {
         $this->id = $id;
         $this->name = $name;
@@ -47,7 +47,7 @@ class Product
         $this->price = $price;
     }
 
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }

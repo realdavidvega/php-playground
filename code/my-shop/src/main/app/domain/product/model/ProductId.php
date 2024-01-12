@@ -20,4 +20,9 @@ class ProductId
     {
         $this->id = $id;
     }
+
+    public function __toString()
+    {
+        return (string) $this->id;
+    }
 }

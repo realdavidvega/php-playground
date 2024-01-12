@@ -13,5 +13,5 @@ serve:
 	./scripts/serve_web.sh
 
 .PHONY: init-db
-serve:
+init-db:
 	./scripts/init-db.sh
