@@ -1,6 +1,6 @@
 <?php
 
-namespace product\service;
+namespace product\repository;
 
 use product\model\Product;
 

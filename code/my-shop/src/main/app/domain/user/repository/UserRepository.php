@@ -14,7 +14,7 @@ interface UserRepository
         string $phone,
         string $email,
         string $password
-    );
+    ): UserId;
 
     public function findUserById(int $id): ?User;
 

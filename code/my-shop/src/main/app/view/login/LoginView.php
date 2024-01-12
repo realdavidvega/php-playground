@@ -6,13 +6,10 @@
 </head>
 <body>
 <?php
-if (isset($loginError)) {
-    echo "<p>$loginError</p>";
-}
-if (isset($loginMessage)) {
-    echo "<p>$loginMessage</p>";
-}
+echo isset($loginError) ? "<p>$loginError</p>" : '';
+echo isset($loginMessage) ? "<p>$loginMessage</p>" : '';
 ?>
+
 <h2>Login</h2>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <label for="email">Email:</label>

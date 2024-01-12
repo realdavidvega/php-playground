@@ -1,9 +1,17 @@
 COMPOSE=docker-compose.yml
 
-.PHONY: mysql
-mysql:
+.PHONY: db
+db:
 	docker-compose -f ${COMPOSE} up --wait -d mysql
 
-.PHONY: run
-run:
-	./run_php.sh
+.PHONY: mysql
+mysql:
+	docker exec -it my-shop-mysql-1 mysql -u root -psomeRootPassword
+
+.PHONY: serve
+serve:
+	./scripts/serve_web.sh
+
+.PHONY: init-db
+init-db:
+	./scripts/init-db.sh

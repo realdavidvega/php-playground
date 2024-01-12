@@ -6,15 +6,9 @@
 </head>
 <body>
 <?php
-if (isset($registerError)) {
-    echo "<p>$registerError</p>";
-}
-if (isset($registerSuccess)) {
-    echo "<p>$registerSuccess</p>";
-}
-if (isset($registerMessage)) {
-    echo "<p>$registerMessage</p>";
-}
+echo isset($registerError) ? "<p>$registerError</p>" : '';
+echo isset($registerSuccess) ? "<p>$registerSuccess</p>" : '';
+echo isset($registerMessage) ? "<p>$registerMessage</p>" : '';
 ?>
 
 <h2>Register</h2>
