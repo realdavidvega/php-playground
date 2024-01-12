@@ -11,8 +11,6 @@ use user\model\UserError;
 use user\model\UserId;
 use user\service\DefaultUserService;
 
-Utils::checkAuthentication();
-
 function getUserName(): Either
 {
     try {
@@ -46,7 +44,7 @@ function getProducts(): Either
 
 function checkAddToCardAction(array $products): void
 {
-    if (isset($_POST['Add to cart'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Add to cart'])) {
         $productId = $_POST['id'];
         $product = array_filter($products, function ($item) use ($productId) {
             return $item['id'] == $productId;
@@ -62,6 +60,8 @@ function checkAddToCardAction(array $products): void
         }
     }
 }
+
+Utils::checkAuthentication();
 
 $maybeName = getUserName();
 if ($maybeName->isRight()) {

@@ -3,10 +3,12 @@ session_start();
 
 require_once '../../../../../vendor/autoload.php';
 
+use shared\Either;
 use user\model\UserError;
 use user\service\DefaultUserService;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
+function checkRegister(): Either
+{
     $name = trim($_POST["name"]);
     $surname = trim($_POST["surname"]);
     $address = trim($_POST["address"]);
@@ -17,20 +19,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
 
     if ($password !== $confirm_password) {
         $registerError = "The passwords doesn't match. Please try again.";
+        return Either::left($registerError);
     } else {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
         try {
             $service = new DefaultUserService();
             $service->register($name, $surname, $address, $phone, $email, $hashed_password);
             $registerSuccess = "User created successfully!";
+            return Either::right($registerSuccess);
         } catch (UserError $e) {
             $registerError = $e->getMessage();
+            return Either::left($registerError);
         } catch (Exception $e) {
             echo 'An error occurred: ' . $e->getMessage();
+            die ("Error: " . $e->getMessage());
         }
     }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
+    $maybeRegister = checkRegister();
+    if ($maybeRegister->isRight()) {
+        $registerSuccess = $maybeRegister->getValue();
+    } else {
+        $registerError = $maybeRegister->getValue();
+    }
+}
+
 $registerMessage = "If you are registered, <a href='../login/Login.php'> login</a>.";
 
 include 'RegisterView.php';
