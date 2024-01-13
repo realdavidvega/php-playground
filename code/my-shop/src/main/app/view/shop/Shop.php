@@ -15,7 +15,7 @@ function getUserName(): Either
 {
     try {
         $userService = new UserServiceInterpreter();
-        $id = new UserId($_SESSION['id']);
+        $id = $_SESSION['userId'];
         $name = $userService->getUserInfo($id)->getName();
         return Either::right($name);
     } catch (UserError $e) {

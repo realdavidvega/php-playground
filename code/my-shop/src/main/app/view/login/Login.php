@@ -14,8 +14,8 @@ function checkLogin(): Either
 
     try {
         $service = new UserServiceInterpreter();
-        $id = $service->login($email, $password)->getId();
-        return Either::right($id);
+        $userId = $service->login($email, $password);
+        return Either::right($userId);
     } catch (UserError $e) {
         $loginError = $e->getMessage();
         return Either::left($loginError);
@@ -28,7 +28,7 @@ function checkLogin(): Either
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $maybeLogin = checkLogin();
     if ($maybeLogin->isRight()) {
-        $_SESSION['id'] = $maybeLogin->getValue();
+        $_SESSION['userId'] = $maybeLogin->getValue();
         header("Location: ../shop/Shop.php");
         exit();
     } else {

@@ -17,9 +17,6 @@ class UserServiceInterpreter implements UserService
         $this->repository = new UserMysqlRepository();
     }
 
-    /**
-     * @throws UserError
-     */
     public function register(
         string $name,
         string $surname,
@@ -37,9 +34,6 @@ class UserServiceInterpreter implements UserService
         }
     }
 
-    /**
-     * @throws UserError
-     */
     public function login(string $email, string $password): UserId
     {
         $loginData = $this->repository->validateUserAndPassword($email, $password);
@@ -50,9 +44,6 @@ class UserServiceInterpreter implements UserService
         }
     }
 
-    /**
-     * @throws UserError
-     */
     public function getUserInfo(UserId $id): User
     {
         $userData = $this->repository->findUserById($id->getId());

@@ -16,11 +16,6 @@ class ProductServiceInterpreter implements ProductService
         $this->repository = new ProductMysqlRepository();
     }
 
-
-    /**
-     * @throws ProductError
-     * @return Product[]
-     */
     public function getProducts(): array
     {
         $productData = $this->repository->findAll();

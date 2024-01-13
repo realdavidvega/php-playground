@@ -6,7 +6,7 @@ abstract class Utils
 {
     public static function checkAuthentication(): void
     {
-        if (!isset($_SESSION['id'])) {
+        if (!isset($_SESSION['userId'])) {
             header('Location: ../../../index.php');
         }
     }
