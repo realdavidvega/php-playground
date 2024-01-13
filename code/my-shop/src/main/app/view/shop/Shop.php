@@ -4,17 +4,17 @@ session_start();
 require_once '../../../../../vendor/autoload.php';
 
 use product\model\ProductError;
-use product\service\DefaultProductService;
+use product\service\ProductServiceInterpreter;
 use shared\Either;
 use shared\Utils;
 use user\model\UserError;
 use user\model\UserId;
-use user\service\DefaultUserService;
+use user\service\UserServiceInterpreter;
 
 function getUserName(): Either
 {
     try {
-        $userService = new DefaultUserService();
+        $userService = new UserServiceInterpreter();
         $id = new UserId($_SESSION['id']);
         $name = $userService->getUserInfo($id)->getName();
         return Either::right($name);
@@ -30,7 +30,7 @@ function getUserName(): Either
 function getProducts(): Either
 {
     try {
-        $productService = new DefaultProductService();
+        $productService = new ProductServiceInterpreter();
         $products = $productService->getProducts();
         return Either::right($products);
     } catch (ProductError $e) {

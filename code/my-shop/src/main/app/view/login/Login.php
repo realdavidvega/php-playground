@@ -5,7 +5,7 @@ require_once '../../../../../vendor/autoload.php';
 
 use shared\Either;
 use user\model\UserError;
-use user\service\DefaultUserService;
+use user\service\UserServiceInterpreter;
 
 function checkLogin(): Either
 {
@@ -13,7 +13,7 @@ function checkLogin(): Either
     $password = trim($_POST["password"]);
 
     try {
-        $service = new DefaultUserService();
+        $service = new UserServiceInterpreter();
         $id = $service->login($email, $password)->getId();
         return Either::right($id);
     } catch (UserError $e) {
@@ -35,7 +35,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
         $loginError = $maybeLogin->getValue();
     }
 }
-
-$loginMessage = "If you are not registered, <a href='../register/Register.php'> register</a>.";
 
 include "LoginView.php";

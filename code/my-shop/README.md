@@ -1,8 +1,9 @@
 # MyShop
 
-Simple PHP project for teaching of simple MVC and DDD.
+Simple PHP project for teaching of MVC, DDD, Hexagonal, FP...
 
 ## Requirements
+- WSL / Linux / macOS
 - PHP >= 8.3
 - Composer
 - Docker

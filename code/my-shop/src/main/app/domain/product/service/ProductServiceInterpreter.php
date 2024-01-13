@@ -4,16 +4,16 @@ namespace product\service;
 
 use product\model\Product;
 use product\model\ProductError;
-use product\repository\DefaultProductRepository;
+use product\repository\ProductMysqlRepository;
 use product\repository\ProductRepository;
 
-class DefaultProductService implements ProductService
+class ProductServiceInterpreter implements ProductService
 {
     private ProductRepository $repository;
 
     public function __construct()
     {
-        $this->repository = new DefaultProductRepository();
+        $this->repository = new ProductMysqlRepository();
     }
 
 

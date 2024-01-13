@@ -11,7 +11,7 @@ final class CreateOrdersTable extends AbstractMigration
         $sql = "
             CREATE TABLE IF NOT EXISTS `orders` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
-              `date` date NOT NULL,
+              `created_at` date NOT NULL,
               `user_id` int(11) NOT NULL,
               `product_id` int(11) NOT NULL,
               PRIMARY KEY (`id`),

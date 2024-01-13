@@ -8,8 +8,9 @@
 <?php
 echo isset($registerError) ? "<p>$registerError</p>" : '';
 echo isset($registerSuccess) ? "<p>$registerSuccess</p>" : '';
-echo isset($registerMessage) ? "<p>$registerMessage</p>" : '';
 ?>
+
+If you are already registered, <a href='../login/Login.php'> login</a>.
 
 <h2>Register</h2>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

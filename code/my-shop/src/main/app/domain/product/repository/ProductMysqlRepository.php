@@ -7,7 +7,7 @@ use PDO;
 use product\model\Product;
 use product\model\ProductId;
 
-class DefaultProductRepository implements ProductRepository
+class ProductMysqlRepository implements ProductRepository
 {
     private PDO $connection;
 
@@ -16,9 +16,6 @@ class DefaultProductRepository implements ProductRepository
         $this->connection = DatabaseConfig::openConnection();
     }
 
-    /**
-     * @return Product[]|null
-     */
     public function findAll(): ?array
     {
         $statement = $this->connection->prepare("
