@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once '../../../../../vendor/autoload.php';
 
@@ -8,7 +7,6 @@ use product\service\ProductServiceInterpreter;
 use shared\Either;
 use shared\Utils;
 use user\model\UserError;
-use user\model\UserId;
 use user\service\UserServiceInterpreter;
 
 function getUserName(): Either
@@ -61,6 +59,7 @@ function checkAddToCardAction(array $products): void
     }
 }
 
+session_start();
 Utils::checkAuthentication();
 
 $maybeName = getUserName();

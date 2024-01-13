@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once '../../../../../vendor/autoload.php';
 
@@ -36,6 +35,8 @@ function checkRegister(): Either
         }
     }
 }
+
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $maybeRegister = checkRegister();

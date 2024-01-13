@@ -26,6 +26,7 @@ if (isset($productsError)) {
     }
 }
 ?>
+<br>
 <a href="../logout/Logout.php">Logout</a>
 </body>
 </html>

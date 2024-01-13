@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once '../../../../../vendor/autoload.php';
 
@@ -24,6 +23,8 @@ function checkLogin(): Either
         die ("Error: " . $e->getMessage());
     }
 }
+
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $maybeLogin = checkLogin();
