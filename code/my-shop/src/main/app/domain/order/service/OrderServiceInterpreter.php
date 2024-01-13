@@ -29,7 +29,7 @@ class OrderServiceInterpreter implements OrderService
             if ($orderData != null) {
                 return $orderData;
             } else {
-                throw new OrderError("Failed fetching products.");
+                throw new OrderError("Failed fetching orders.");
             }
         } catch (DateException $e) {
             throw new OrderError("Invalid date format in orders: " . $e->getMessage());
