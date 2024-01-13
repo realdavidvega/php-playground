@@ -8,7 +8,9 @@
 <body>
 
 <?php
-echo isset($userError) ? "<p>$userError</p>" : "<h1>Hi $name, welcome to MyShop!</h1><h2>Products</h2>";
+echo isset($userError) ? "<p>$userError</p>" : "<h1>Hi $name, welcome to MyShop!</h1>";
+include "../../components/Menu.php";
+echo "<h2>Products</h2>";
 if (isset($productsError)) {
     echo "<p>$productsError</p>";
 } else {

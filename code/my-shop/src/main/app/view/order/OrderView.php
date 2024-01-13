@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+<h1>MyShop</h1>
+<?php include "../../components/Menu.php" ?>
 <h2>Orders</h2>
 <?php
 if (isset($ordersError)) {
