@@ -20,9 +20,9 @@ if (isset($productsError)) {
         <h3><?= $product->getName() ?></h3>
         <h3><?= $product->getPrice() ?></h3>
         <img src="../../../public/images/<?= $product->getImage() ?>.png" alt="<?= $product->getName() ?>">
-        <form action="Shop.php" method="post">
-            <input type="hidden" name="id" value="<?= $product->getId() ?>">
-            <input type="submit" value="Add to cart">
+        <form action="../cart/Cart.php" method="post">
+            <input type="hidden" name="id" value="<?=$product->getId()?>">
+            <input type="submit" value="Add to cart" name="add_to_cart">
         </form>
         <?php
     }
