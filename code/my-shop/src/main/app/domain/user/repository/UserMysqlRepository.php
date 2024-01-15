@@ -7,7 +7,7 @@ use config\DatabaseConfig;
 use user\model\User;
 use user\model\UserId;
 
-class DefaultUserRepository implements UserRepository
+class UserMysqlRepository implements UserRepository
 {
     private PDO $connection;
 

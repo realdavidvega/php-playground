@@ -1,11 +1,10 @@
 <?php
-session_start();
 
 require_once '../../../../../vendor/autoload.php';
 
 use shared\Either;
 use user\model\UserError;
-use user\service\DefaultUserService;
+use user\service\UserServiceInterpreter;
 
 function checkLogin(): Either
 {
@@ -13,9 +12,9 @@ function checkLogin(): Either
     $password = trim($_POST["password"]);
 
     try {
-        $service = new DefaultUserService();
-        $id = $service->login($email, $password)->getId();
-        return Either::right($id);
+        $service = new UserServiceInterpreter();
+        $userId = $service->login($email, $password);
+        return Either::right($userId);
     } catch (UserError $e) {
         $loginError = $e->getMessage();
         return Either::left($loginError);
@@ -25,17 +24,17 @@ function checkLogin(): Either
     }
 }
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $maybeLogin = checkLogin();
     if ($maybeLogin->isRight()) {
-        $_SESSION['id'] = $maybeLogin->getValue();
+        $_SESSION['userId'] = $maybeLogin->getValue();
         header("Location: ../shop/Shop.php");
         exit();
     } else {
         $loginError = $maybeLogin->getValue();
     }
 }
-
-$loginMessage = "If you are not registered, <a href='../register/Register.php'> register</a>.";
 
 include "LoginView.php";

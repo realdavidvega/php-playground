@@ -1,21 +1,19 @@
 <?php
-session_start();
 
 require_once '../../../../../vendor/autoload.php';
 
 use product\model\ProductError;
-use product\service\DefaultProductService;
+use product\service\ProductServiceInterpreter;
 use shared\Either;
 use shared\Utils;
 use user\model\UserError;
-use user\model\UserId;
-use user\service\DefaultUserService;
+use user\service\UserServiceInterpreter;
 
 function getUserName(): Either
 {
     try {
-        $userService = new DefaultUserService();
-        $id = new UserId($_SESSION['id']);
+        $userService = new UserServiceInterpreter();
+        $id = $_SESSION['userId'];
         $name = $userService->getUserInfo($id)->getName();
         return Either::right($name);
     } catch (UserError $e) {
@@ -30,7 +28,7 @@ function getUserName(): Either
 function getProducts(): Either
 {
     try {
-        $productService = new DefaultProductService();
+        $productService = new ProductServiceInterpreter();
         $products = $productService->getProducts();
         return Either::right($products);
     } catch (ProductError $e) {
@@ -42,27 +40,10 @@ function getProducts(): Either
     }
 }
 
-function checkAddToCardAction(array $products): void
-{
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Add to cart'])) {
-        $productId = $_POST['id'];
-        $product = array_filter($products, function ($item) use ($productId) {
-            return $item['id'] == $productId;
-        });
-
-        if (!empty($product)) {
-            $product = reset($product);
-            $_SESSION['cart'][] = [
-                'id' => count($_SESSION['cart']) + 1,
-                'date' => date('Y-m-d H:i:s'),
-                'product' => $product
-            ];
-        }
-    }
-}
-
+session_start();
 Utils::checkAuthentication();
 
+$name = '';
 $maybeName = getUserName();
 if ($maybeName->isRight()) {
     $name = $maybeName->getValue();
@@ -70,10 +51,10 @@ if ($maybeName->isRight()) {
     $userError = $maybeName->getValue();
 }
 
+$products = [];
 $maybeProducts = getProducts();
 if ($maybeProducts->isRight()) {
     $products = $maybeProducts->getValue();
-    checkAddToCardAction((array)$products);
 } else {
     $productsError = $maybeProducts->getValue();
 }

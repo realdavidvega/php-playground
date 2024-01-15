@@ -1,11 +1,10 @@
 <?php
-session_start();
 
 require_once '../../../../../vendor/autoload.php';
 
 use shared\Either;
 use user\model\UserError;
-use user\service\DefaultUserService;
+use user\service\UserServiceInterpreter;
 
 function checkRegister(): Either
 {
@@ -23,7 +22,7 @@ function checkRegister(): Either
     } else {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         try {
-            $service = new DefaultUserService();
+            $service = new UserServiceInterpreter();
             $service->register($name, $surname, $address, $phone, $email, $hashed_password);
             $registerSuccess = "User created successfully!";
             return Either::right($registerSuccess);
@@ -37,6 +36,8 @@ function checkRegister(): Either
     }
 }
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $maybeRegister = checkRegister();
     if ($maybeRegister->isRight()) {
@@ -45,7 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         $registerError = $maybeRegister->getValue();
     }
 }
-
-$registerMessage = "If you are registered, <a href='../login/Login.php'> login</a>.";
 
 include 'RegisterView.php';

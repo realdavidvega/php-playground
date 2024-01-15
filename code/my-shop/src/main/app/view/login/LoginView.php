@@ -7,8 +7,9 @@
 <body>
 <?php
 echo isset($loginError) ? "<p>$loginError</p>" : '';
-echo isset($loginMessage) ? "<p>$loginMessage</p>" : '';
 ?>
+
+If you are not registered, <a href='../register/Register.php'> register</a>.
 
 <h2>Login</h2>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

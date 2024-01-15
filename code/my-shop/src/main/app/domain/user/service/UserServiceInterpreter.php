@@ -5,21 +5,18 @@ namespace user\service;
 use user\model\User;
 use user\model\UserError;
 use user\model\UserId;
-use user\repository\DefaultUserRepository;
+use user\repository\UserMysqlRepository;
 use user\repository\UserRepository;
 
-class DefaultUserService implements UserService
+class UserServiceInterpreter implements UserService
 {
     private UserRepository $repository;
 
     public function __construct()
     {
-        $this->repository = new DefaultUserRepository();
+        $this->repository = new UserMysqlRepository();
     }
 
-    /**
-     * @throws UserError
-     */
     public function register(
         string $name,
         string $surname,
@@ -37,9 +34,6 @@ class DefaultUserService implements UserService
         }
     }
 
-    /**
-     * @throws UserError
-     */
     public function login(string $email, string $password): UserId
     {
         $loginData = $this->repository->validateUserAndPassword($email, $password);
@@ -50,9 +44,6 @@ class DefaultUserService implements UserService
         }
     }
 
-    /**
-     * @throws UserError
-     */
     public function getUserInfo(UserId $id): User
     {
         $userData = $this->repository->findUserById($id->getId());

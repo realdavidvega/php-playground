@@ -1,8 +1,9 @@
 # MyShop
 
-Simple PHP project for teaching of simple MVC and DDD.
+Simple PHP project for teaching of MVC, DDD, Hexagonal, FP...
 
 ## Requirements
+- WSL / Linux / macOS
 - PHP >= 8.3
 - Composer
 - Docker
@@ -14,3 +15,7 @@ Simple PHP project for teaching of simple MVC and DDD.
 4. Optionally, instead of populating the DB manually, you can 
 run `make init-db` to add some data.
 5. Also, you can run `make mysql` to open the mysql console.
+
+## Tips
+1. If adding a new namespace to composer, run `composer dump-autoload`
+after adding it.

@@ -7,7 +7,9 @@ use product\model\Product;
 interface ProductRepository
 {
     /**
-     * @return Product[]|null
+     * Finds all the products.
+     *
+     * @return array|null the found items.
      */
     public function findAll(): ?array;
 }
