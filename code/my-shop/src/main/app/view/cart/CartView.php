@@ -14,7 +14,8 @@
 <?php
 if (!empty($_SESSION['cart'])) {
     $total = 0;
-    foreach ($_SESSION['cart'] as $id_product => $product) {
+    foreach ($_SESSION['cart'] as $id_product => $data) {
+        $product = $data['product'];
         $price = $product->getPrice();
         $total += $price;
         ?>
@@ -22,10 +23,7 @@ if (!empty($_SESSION['cart'])) {
         <p>Name: <?= $product->getName(); ?></p>
         <p>Price: $<?= $price; ?></p>
         <br>
-        <form method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
-            <input type="hidden" name="delete_product" value="<?= $id_product; ?>">
-            <input type="submit" name="delete" value="Delete">
-        </form>
+        <button onclick="location.href = '../cart/Cart.php?delete_product=' + '<?= $id_product ?>';">Delete</button>
         <br>
         <?php
     }

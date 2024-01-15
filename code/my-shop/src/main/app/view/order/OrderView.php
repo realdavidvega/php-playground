@@ -26,14 +26,15 @@ if (isset($ordersError)) {
         ?>
         <tr>
             <td><?= $order->getId() ?></td>
-            <td><?= $order->getCreatedAt() ?></td>
+            <td><?= $order->getCreatedAt()->format('Y-m-d H:i:s') ?></td>
             <td><?= $order->getProductId() ?></td>
         </tr>
         <?php
     }
     }
     ?>
-    <br>
-    <a href="../logout/Logout.php">Logout</a>
+</table>
+<br>
+<a href="../logout/Logout.php">Logout</a>
 </body>
 </html>

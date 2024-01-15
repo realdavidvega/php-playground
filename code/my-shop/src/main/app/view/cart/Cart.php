@@ -68,7 +68,7 @@ function buyAction(): string
 
 function deleteAction(): string
 {
-    $productId = $_POST['id'];
+    $productId = $_GET['delete_product'];
     unset($_SESSION['cart'][$productId]);
     return 'Product deleted from cart';
 }
@@ -87,10 +87,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $orderMessage = addToCartAction();
     } elseif (isset($_POST['buy'])) {
         $orderMessage = buyAction();
-    } elseif (isset($_POST['delete_product'])) {
-        $orderMessage = deleteAction();
     } elseif (isset($_POST['clean_cart'])) {
         $orderMessage = cleanCartAction();
+    }
+} elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (isset($_GET['delete_product'])) {
+        $orderMessage = deleteAction();
     }
 }
 

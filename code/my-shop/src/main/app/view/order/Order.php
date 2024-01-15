@@ -11,7 +11,7 @@ function getOrders()
 {
     try {
         $orderService = new OrderServiceInterpreter();
-        $orders = $orderService->getOrderForUser();
+        $orders = $orderService->getOrdersForUser();
         return Either::right($orders);
     } catch (OrderError $e) {
         $orderError = $e->getMessage();

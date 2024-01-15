@@ -21,7 +21,7 @@ class OrderServiceInterpreter implements OrderService
         $this->repository = new OrderMysqlRepository();
     }
 
-    public function getOrderForUser(): array
+    public function getOrdersForUser(): array
     {
         $userId = $_SESSION['userId'];
         try {

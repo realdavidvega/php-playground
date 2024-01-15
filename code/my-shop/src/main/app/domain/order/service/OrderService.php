@@ -15,7 +15,7 @@ interface OrderService
      * @throws OrderError If there was an error retrieving the order data.
      * @return array The order data for the user.
      */
-    public function getOrderForUser(): array;
+    public function getOrdersForUser(): array;
 
     /**
      * Inserts a new order into the system.
